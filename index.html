@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Festa - Plan your event</title><style>
+:root{--plum:#34184a;--gold:#f2a900;--jade:#1f8a70;--paper:#fff9fb;--ink:#241530;--mute:#6d5c7a;--line:#e8dcee}
+@media(prefers-color-scheme:dark){:root{--paper:#1c1026;--ink:#f5eefa;--mute:#b9a6c9;--line:#3d2751}}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,Segoe UI,sans-serif;background:var(--paper);color:var(--ink)}
+header{background:var(--plum);color:#fff;padding:14px 5%;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+header b{font:700 24px Georgia,serif;color:var(--gold);margin-right:auto}
+header a{color:#fff;text-decoration:none;padding:4px 2px;border-bottom:2px solid transparent}
+header a:hover,header a:focus-visible,header a.on{border-color:var(--gold);outline:0}
+main{max-width:860px;margin:0 auto;padding:32px 5% 64px}
+h1{font:700 clamp(30px,5vw,46px)/1.15 Georgia,serif;margin:.2em 0 .3em}h2{font:700 24px Georgia,serif;margin:1.6em 0 .4em}
+p,li{max-width:70ch}.mute{color:var(--mute)}
+.panel{border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+label{display:grid;gap:4px;font-weight:600;font-size:14px}
+input,select,button{font:inherit;padding:10px;border-radius:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+button{background:var(--gold);color:#241530;font-weight:700;border:0;cursor:pointer;align-self:end}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--jade);outline-offset:2px}
+.bar{display:grid;grid-template-columns:120px 1fr 90px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.bar i{display:block;height:12px;border-radius:6px;background:var(--jade)}
+.tl{border-left:3px solid var(--gold);padding-left:16px;margin-left:6px}.tl div{margin:0 0 14px}
+.chk label{display:flex;gap:8px;font-weight:400;font-size:16px;align-items:center}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left}
+</style></head><body><header><b>Festa</b><a href="index.html" class="on">index</a><a href="requirements.html">requirements</a><a href="readme.html">readme</a><a href="tasks.html">tasks</a></header><main><h1>Plan your celebration in minutes</h1>
+<p class="mute">Tell Festa about your event. Get a budget, a timeline, a vendor checklist, and ideas to start with.</p>
+<form id="f" class="panel">
+<label>Event type<select id="type"><option value="wedding">Wedding</option><option value="birthday">Birthday</option><option value="community">Community event</option></select></label>
+<label>Guests<input id="guests" type="number" min="1" value="100" required></label>
+<label>Total budget (INR)<input id="budget" type="number" min="1000" step="1000" value="500000" required></label>
+<label>Event date<input id="date" type="date" required></label>
+<button>Create my plan</button>
+</form>
+<section id="out" hidden>
+<h2>Budget</h2><div id="bud" class="panel"></div>
+<h2>Timeline</h2><div id="tl" class="tl"></div>
+<h2>Vendor checklist</h2><div id="vc" class="panel chk"></div>
+<h2>Ideas for you</h2><div id="ideas" class="panel"></div>
+</section>
+<script>
+const D={
+wedding:{split:{Venue:30,Catering:30,"Decor & flowers":12,Photography:10,"Music & entertainment":8,Attire:6,Other:4},
+vendors:["Venue","Caterer","Photographer & videographer","Decorator","Priest or officiant","Band or DJ","Makeup artist"],
+ideas:["Pick a colour story of two shades and repeat it in flowers, invites and lighting.","Add a live station to the menu, such as dosa or chaat, for easy guest mingling.","Set up a memory wall where guests pin photos from the couple's journey."]},
+birthday:{split:{Venue:20,Catering:35,Decor:15,"Cake & desserts":10,Entertainment:12,"Return gifts":5,Other:3},
+vendors:["Venue or hall","Caterer","Cake maker","Decorator","Entertainer or host","Photographer"],
+ideas:["Choose one theme and let the cake, balloons and invites follow it.","Plan two group games so every age enjoys the party.","Make a photo booth corner with props and a simple backdrop."]},
+community:{split:{Venue:20,"Food & water":30,"Stage & sound":18,"Permits & safety":10,Publicity:10,"Volunteers & supplies":8,Other:4},
+vendors:["Venue or ground","Sound and lighting","Caterer","Security and first aid","Printer for banners","Volunteer coordinator"],
+ideas:["Recruit volunteers early and give each a clear role and a badge.","Add a short cultural programme to bring families together.","Create a sign-up QR code so attendees can register and get updates."]}};
+const $=i=>document.getElementById(i);
+const fmt=n=>"INR "+Math.round(n).toLocaleString("en-IN");
+const d0=new Date();d0.setDate(d0.getDate()+120);$("date").valueAsDate=d0;
+$("f").onsubmit=e=>{e.preventDefault();
+const t=D[$("type").value],B=+$("budget").value,G=+$("guests").value,date=new Date($("date").value);
+$("bud").innerHTML=Object.entries(t.split).map(([k,v])=>`<div class="bar"><span>${k}</span><i style="width:${v*3}%"></i><span>${fmt(B*v/100)}</span></div>`).join("")+`<p class="mute">About ${fmt(B/G)} per guest.</p>`;
+const steps=[[0,"Set the budget and guest list"],[7,"Book the venue and fix the date"],[14,"Shortlist and book key vendors"],[30,"Send invitations"],[60,"Finalise menu, decor and schedule"],[90,"Confirm every vendor and the final head count"],[120,"Event day"]];
+const left=Math.max(1,Math.round((date-new Date())/864e5));
+$("tl").innerHTML=steps.map(([b,s])=>{const w=new Date(date);w.setDate(w.getDate()-Math.round((120-b)*left/120));return`<div><b>${w.toDateString()}</b><br>${s}</div>`}).join("");
+$("vc").innerHTML=t.vendors.map((v,i)=>`<label><input type="checkbox">${v}</label>`).join("");
+$("ideas").innerHTML="<ul>"+t.ideas.map(x=>`<li>${x}</li>`).join("")+"</ul>";
+$("out").hidden=false;$("out").scrollIntoView({behavior:"smooth"})};
+</script>
+</main></body></html>

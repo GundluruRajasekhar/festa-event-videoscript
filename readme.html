@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Festa - Readme</title><style>
+:root{--plum:#34184a;--gold:#f2a900;--jade:#1f8a70;--paper:#fff9fb;--ink:#241530;--mute:#6d5c7a;--line:#e8dcee}
+@media(prefers-color-scheme:dark){:root{--paper:#1c1026;--ink:#f5eefa;--mute:#b9a6c9;--line:#3d2751}}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,Segoe UI,sans-serif;background:var(--paper);color:var(--ink)}
+header{background:var(--plum);color:#fff;padding:14px 5%;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+header b{font:700 24px Georgia,serif;color:var(--gold);margin-right:auto}
+header a{color:#fff;text-decoration:none;padding:4px 2px;border-bottom:2px solid transparent}
+header a:hover,header a:focus-visible,header a.on{border-color:var(--gold);outline:0}
+main{max-width:860px;margin:0 auto;padding:32px 5% 64px}
+h1{font:700 clamp(30px,5vw,46px)/1.15 Georgia,serif;margin:.2em 0 .3em}h2{font:700 24px Georgia,serif;margin:1.6em 0 .4em}
+p,li{max-width:70ch}.mute{color:var(--mute)}
+.panel{border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+label{display:grid;gap:4px;font-weight:600;font-size:14px}
+input,select,button{font:inherit;padding:10px;border-radius:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+button{background:var(--gold);color:#241530;font-weight:700;border:0;cursor:pointer;align-self:end}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--jade);outline-offset:2px}
+.bar{display:grid;grid-template-columns:120px 1fr 90px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.bar i{display:block;height:12px;border-radius:6px;background:var(--jade)}
+.tl{border-left:3px solid var(--gold);padding-left:16px;margin-left:6px}.tl div{margin:0 0 14px}
+.chk label{display:flex;gap:8px;font-weight:400;font-size:16px;align-items:center}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left}
+</style></head><body><header><b>Festa</b><a href="index.html">index</a><a href="requirements.html">requirements</a><a href="readme.html" class="on">readme</a><a href="tasks.html">tasks</a></header><main><h1>Festa</h1>
+<p>Festa turns a few details about your event into a budget, a timeline, a vendor checklist and ideas to start with.</p>
+<h2>Run it</h2>
+<p>Open <code>index.html</code> in any modern browser. No install or build step is needed.</p>
+<h2>How to use it</h2>
+<ol><li>Choose wedding, birthday or community event.</li><li>Enter guests, budget and date.</li><li>Select Create my plan.</li><li>Review the budget, follow the timeline, tick vendors as you book them, and pick from the ideas.</li></ol>
+<h2>Files</h2>
+<table><tr><td>index.html</td><td>The working app</td></tr><tr><td>requirements.html</td><td>What Festa must do</td></tr><tr><td>readme.html</td><td>This page</td></tr><tr><td>tasks.html</td><td>Build tasks and status</td></tr></table>
+<h2>Tech</h2>
+<p>HTML, CSS and JavaScript in one file. It can be deployed to GitHub Pages or Vercel as is.</p>
+<h2>Author</h2>
+<p>Gundluru Rajasekhar. <a href="https://github.com/Gundlururajasekhar">GitHub</a></p>
+</main></body></html>

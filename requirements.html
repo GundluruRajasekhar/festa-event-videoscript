@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Festa - Requirements</title><style>
+:root{--plum:#34184a;--gold:#f2a900;--jade:#1f8a70;--paper:#fff9fb;--ink:#241530;--mute:#6d5c7a;--line:#e8dcee}
+@media(prefers-color-scheme:dark){:root{--paper:#1c1026;--ink:#f5eefa;--mute:#b9a6c9;--line:#3d2751}}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,Segoe UI,sans-serif;background:var(--paper);color:var(--ink)}
+header{background:var(--plum);color:#fff;padding:14px 5%;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+header b{font:700 24px Georgia,serif;color:var(--gold);margin-right:auto}
+header a{color:#fff;text-decoration:none;padding:4px 2px;border-bottom:2px solid transparent}
+header a:hover,header a:focus-visible,header a.on{border-color:var(--gold);outline:0}
+main{max-width:860px;margin:0 auto;padding:32px 5% 64px}
+h1{font:700 clamp(30px,5vw,46px)/1.15 Georgia,serif;margin:.2em 0 .3em}h2{font:700 24px Georgia,serif;margin:1.6em 0 .4em}
+p,li{max-width:70ch}.mute{color:var(--mute)}
+.panel{border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+label{display:grid;gap:4px;font-weight:600;font-size:14px}
+input,select,button{font:inherit;padding:10px;border-radius:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+button{background:var(--gold);color:#241530;font-weight:700;border:0;cursor:pointer;align-self:end}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--jade);outline-offset:2px}
+.bar{display:grid;grid-template-columns:120px 1fr 90px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.bar i{display:block;height:12px;border-radius:6px;background:var(--jade)}
+.tl{border-left:3px solid var(--gold);padding-left:16px;margin-left:6px}.tl div{margin:0 0 14px}
+.chk label{display:flex;gap:8px;font-weight:400;font-size:16px;align-items:center}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left}
+</style></head><body><header><b>Festa</b><a href="index.html">index</a><a href="requirements.html" class="on">requirements</a><a href="readme.html">readme</a><a href="tasks.html">tasks</a></header><main><h1>Requirements</h1>
+<p>Festa is a GenAI-powered planning assistant for weddings, birthdays and community events.</p>
+<h2>Users</h2>
+<ul><li>Families and individuals planning a personal celebration.</li><li>Community groups and organisers running local events.</li></ul>
+<h2>Functional requirements</h2>
+<table><tr><th>ID</th><th>Requirement</th></tr>
+<tr><td>F1</td><td>User chooses an event type and enters guests, budget and date.</td></tr>
+<tr><td>F2</td><td>System splits the budget across categories for that event type and shows cost per guest.</td></tr>
+<tr><td>F3</td><td>System builds a dated timeline from today to the event day.</td></tr>
+<tr><td>F4</td><td>System lists the vendors needed and lets the user tick them off.</td></tr>
+<tr><td>F5</td><td>System suggests personalised ideas for themes, menu and activities.</td></tr>
+<tr><td>F6</td><td>User can revise inputs and regenerate the plan.</td></tr></table>
+<h2>Non-functional requirements</h2>
+<ul><li>Works on phones and desktops, with no sign-up needed.</li><li>Plan appears within one second of submitting.</li><li>Keyboard accessible, with readable contrast in light and dark mode.</li><li>Inputs stay in the browser; nothing is sent to a server.</li></ul>
+<h2>Out of scope for the MVP</h2>
+<ul><li>Online payments and vendor booking.</li><li>Live LLM calls; ideas come from built-in templates now and can move to an LLM later.</li></ul>
+</main></body></html>
